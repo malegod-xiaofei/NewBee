@@ -1,4 +1,4 @@
-package com.zyf.designmodel._02_DecoratorPattern;
+package com.zyf.designmodel.Pattern02_Decorator;
 
 // 定义一个具体装饰者，表示糖
 public class Sugar extends CondimentDecorator {

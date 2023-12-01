@@ -1,4 +1,4 @@
-package com.zyf.designmodel._02_DecoratorPattern;
+package com.zyf.designmodel.Pattern02_Decorator;
 
 // 定义一个抽象组件，表示饮料
 public abstract class Beverage {

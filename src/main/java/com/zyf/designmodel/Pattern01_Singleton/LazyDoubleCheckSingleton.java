@@ -1,4 +1,4 @@
-package com.zyf.designmodel._01_SingletonPattern;
+package com.zyf.designmodel.Pattern01_Singleton;
 
 /**
  * @author Malegod_xiaofei

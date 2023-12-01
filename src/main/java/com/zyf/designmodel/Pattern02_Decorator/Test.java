@@ -1,4 +1,4 @@
-package com.zyf.designmodel._02_DecoratorPattern;
+package com.zyf.designmodel.Pattern02_Decorator;
 
 // 测试代码
 public class Test {
