@@ -1,7 +1,7 @@
 package com.zyf.designmodel.Pattern02_Decorator;
 
 // 测试代码
-public class Test {
+public class Decorator {
 
     public static void main(String[] args) {
         // 创建一个咖啡对象
