@@ -15,13 +15,14 @@ object Spark02_RDD_File {
     val sc = new SparkContext(sparkconf)
 
     // TODO 创建 RDD
-    // 从内存中创建 RDD，将内存中集合的数据作为处理的数据源
-    val seq = Seq[Int](1, 2, 3, 4, 5)
-
-    // parallelize : 并行
-    // val rdd: RDD[Int] = sc.parallelize(seq)
-    // makeRDD 方法在底层实现时其实就是调用了 rdd 对象的 parallelize 方法
-    val rdd: RDD[Int] = sc.makeRDD(seq)
+    // 从文件中创建 RDD，将文件中的数据作为处理的数据源
+    var rdd: RDD[String] = sc.textFile(Thread.currentThread().getContextClassLoader.getResource("datas").getPath)
+    // path 路径可以是文件的具体路径，也可以是目录的名称
+    rdd = sc.textFile("datas")
+    // path 路径还可以使用通配符
+    rdd = sc.textFile("datas/1*.txt")
+    // path 还可以是分布式路径
+    rdd = sc.textFile("hdfs://linux1:8020//test.txt")
     rdd.collect().foreach(println)
 
     // TODO 关闭环境
