@@ -18,7 +18,9 @@ object Spark10_RDD_Operator_Transform {
     val rdd = sc.makeRDD(List(1, 2, 3, 4, 5, 6), 3)
 
     // coalesce方法默认情况下不会将分区的数据打乱重新组合
-    val coalesceRDD = rdd.coalesce(2)
+    // 这种情况下的缩减分区可能会导致数据不均衡，出现数据倾斜
+    // 如果想要让数据均衡，可以进行 shuffle 处理
+    val coalesceRDD = rdd.coalesce(2, true)
 
 
     coalesceRDD.saveAsTextFile("src/main/resources/output2")
