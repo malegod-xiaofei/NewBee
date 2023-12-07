@@ -1,12 +1,13 @@
 package bigdata.spark.core.rdd.operator.transform
 
+import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
  * @author Malegod_xiaofei
  * @create 2023-12-04-22:49
  */
-object Spark08_RDD_Operator_Transform {
+object Spark08_RDD_Operator_Transform_Sample {
 
   def main(args: Array[String]): Unit = {
 
@@ -14,7 +15,7 @@ object Spark08_RDD_Operator_Transform {
     val sc = new SparkContext(sparkconf)
 
     // TODO 算子 - sample
-    val rdd = sc.makeRDD(List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
 
     // sample 算子需要三个参数
     // 1.第一个参数表示，抽取数据后是否将数据返回 true (返回)，false(丢弃)

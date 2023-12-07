@@ -18,7 +18,7 @@ object Spark06_RDD_Operator_Transform_Test {
     val sc = new SparkContext(sparkconf)
 
     // TODO 算子 - group by
-    val rdd = sc.textFile("src/main/resources/datas/apache.log")
+    val rdd: RDD[String] = sc.textFile("src/main/resources/datas/apache.log")
 
     val timeRDD: RDD[(String, Iterable[(String, Int)])] = rdd.map(
       line => {

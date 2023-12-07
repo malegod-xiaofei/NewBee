@@ -7,7 +7,7 @@ import org.apache.spark.{SparkConf, SparkContext}
  * @author Malegod_xiaofei
  * @create 2023-12-04-22:49
  */
-object Spark09_RDD_Operator_Transform {
+object Spark09_RDD_Operator_Transform_Distinct {
 
   def main(args: Array[String]): Unit = {
 
@@ -15,7 +15,7 @@ object Spark09_RDD_Operator_Transform {
     val sc = new SparkContext(sparkconf)
 
     // TODO 算子 - distinct
-    val rdd = sc.makeRDD(List(1, 2, 3, 4, 1, 2, 3, 4))
+    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4, 1, 2, 3, 4))
 
     // map(x => (x, null)).reduceByKey((x, _) => x, numPartitions).map(_._1)
 

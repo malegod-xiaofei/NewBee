@@ -10,7 +10,7 @@ import org.apache.spark.{SparkConf, SparkContext}
  * @author Malegod_xiaofei
  * @create 2023-12-04-22:49
  */
-object Spark07_RDD_Operator_Transform {
+object Spark07_RDD_Operator_Transform_Filter {
 
   def main(args: Array[String]): Unit = {
 
@@ -18,8 +18,8 @@ object Spark07_RDD_Operator_Transform {
     val sc = new SparkContext(sparkconf)
 
     // TODO 算子 - filter
-    val rdd = sc.makeRDD(List(1, 2, 3, 4))
-    val filterRDD = rdd.filter(_ % 2 != 0)
+    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4))
+    val filterRDD: RDD[Int] = rdd.filter(_ % 2 != 0)
 
     filterRDD.collect().foreach(println)
 

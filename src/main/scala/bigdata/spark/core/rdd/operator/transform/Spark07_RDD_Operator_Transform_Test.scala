@@ -18,10 +18,10 @@ object Spark07_RDD_Operator_Transform_Test {
     val sc = new SparkContext(sparkconf)
 
     // TODO 算子 - filter
-    val rdd = sc.textFile("src/main/resources/datas/apache.log")
+    val rdd: RDD[String] = sc.textFile("src/main/resources/datas/apache.log")
     rdd.filter(line => {
-      val datas = line.split(" ")
-      val time = datas(3)
+      val datas: Array[String] = line.split(" ")
+      val time: String = datas(3)
       time.startsWith("17/05/2015")
     }).collect().foreach(println)
 
