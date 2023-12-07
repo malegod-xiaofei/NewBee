@@ -1,5 +1,6 @@
 package bigdata.spark.core.rdd.operator.transform
 
+import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
@@ -14,11 +15,11 @@ object Spark01_RDD_Operator_Transform_Test {
     val sc = new SparkContext(sparkconf)
 
     // TODO 算子 - map
-    val rdd = sc.textFile(Thread.currentThread().getContextClassLoader.getResource("datas/apache.log").getPath)
+    val rdd: RDD[String] = sc.textFile(Thread.currentThread().getContextClassLoader.getResource("datas/apache.log").getPath)
 
     // 长的字符串
     // 短的字符串
-    val mapRDD = rdd.map(
+    val mapRDD: RDD[String] = rdd.map(
       line => {
         val datas = line.split(" ")
         datas(6)

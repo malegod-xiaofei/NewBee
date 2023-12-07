@@ -1,5 +1,6 @@
 package bigdata.spark.core.rdd.bulider
 
+import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
@@ -30,7 +31,7 @@ object Spark03_RDD_File_Par2 {
 
     // 如果数据源为多个文件，那么计算分区时以文件为单位进行分区
 
-    val rdd = sc.textFile(Thread.currentThread().getContextClassLoader.getResource("datas/word.txt").getPath, 2)
+    val rdd: RDD[String] = sc.textFile(Thread.currentThread().getContextClassLoader.getResource("datas/word.txt").getPath, 2)
     rdd.saveAsTextFile("src/main/resources/output")
 
     // TODO 关闭环境

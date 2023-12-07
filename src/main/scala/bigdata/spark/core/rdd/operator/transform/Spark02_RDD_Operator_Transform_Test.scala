@@ -1,5 +1,6 @@
 package bigdata.spark.core.rdd.operator.transform
 
+import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
@@ -14,11 +15,11 @@ object Spark02_RDD_Operator_Transform_Test {
     val sc = new SparkContext(sparkconf)
 
     // TODO 算子 - mapPartitions
-    val rdd = sc.makeRDD(List(1, 2, 3, 4), 2)
+    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4), 2)
 
     // 【1,2】,【3,4】
     // 【2】,【4】
-    val mapRDD = rdd.mapPartitions(
+    val mapRDD: RDD[Int] = rdd.mapPartitions(
       iter => {
         List(iter.max).iterator
       }

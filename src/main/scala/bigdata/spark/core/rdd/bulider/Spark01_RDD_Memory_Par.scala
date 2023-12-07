@@ -11,7 +11,7 @@ object Spark01_RDD_Memory_Par {
   def main(args: Array[String]): Unit = {
 
     // TODO 准备环境
-    val sparkConf = new SparkConf().setMaster("local[*]").setAppName("RDD")
+    val sparkConf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("RDD")
     sparkConf.set("spark.default.parallelism", "5")
     val sc = new SparkContext(sparkConf)
 
@@ -23,7 +23,7 @@ object Spark01_RDD_Memory_Par {
     // spark 在默认情况下，从配置对象中获取配置参数：spark.default.parallelism
     // 如果获取不到，那么使用 totalCores属性，这个属性取值为当前运行环境的最大可用核心数
     // val rdd = sc.makeRDD(List(1, 2, 3, 4),2)
-    val rdd = sc.makeRDD(List(1, 2, 3, 4))
+    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4))
     // 将处理的数据保存成分区文件
     rdd.saveAsTextFile("src/main/resources/output")
 

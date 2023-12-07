@@ -1,5 +1,6 @@
 package bigdata.spark.core.rdd.operator.transform
 
+import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
@@ -19,16 +20,16 @@ object Spark01_RDD_Operator_Transform_Par {
     //     只有前面一个数据全部的逻辑执行完毕后，才会执行下一个数据。
     //     分区内数据的执行是有序的。
     // 2.不同分区数据计算是无序的
-    val rdd = sc.makeRDD(List(1, 2, 3, 4), 2)
+    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4), 2)
 
-    val mapRDD = rdd.map(
+    val mapRDD: RDD[Int] = rdd.map(
       num => {
         println(">>>>>" + num)
         num
       }
     )
 
-    val mapRDD1 = mapRDD.map(
+    val mapRDD1: RDD[Int] = mapRDD.map(
       num => {
         println("#####" + num)
         num

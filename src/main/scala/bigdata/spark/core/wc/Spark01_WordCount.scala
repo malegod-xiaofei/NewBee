@@ -32,7 +32,7 @@ object Spark01_WordCount {
     // 4. 对分组后的数据进行转换
     //    (hello, hello, hello), (world, world)
     //    (hello, 3), (world, 2)
-    val wordToCount = wordGroup.map {
+    val wordToCount: RDD[(String, Int)] = wordGroup.map {
       case (word, list) => {
         (word, list.size)
       }

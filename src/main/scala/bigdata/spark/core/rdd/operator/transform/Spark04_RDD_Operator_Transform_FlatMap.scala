@@ -7,26 +7,23 @@ import org.apache.spark.{SparkConf, SparkContext}
  * @author Malegod_xiaofei
  * @create 2023-12-04-22:49
  */
-object Spark01_RDD_Operator_Transform_Map {
+object Spark04_RDD_Operator_Transform_FlatMap {
 
   def main(args: Array[String]): Unit = {
 
     val sparkconf = new SparkConf().setMaster("local[*]").setAppName("RDD")
     val sc = new SparkContext(sparkconf)
 
-    // TODO 算子 - map
+    // TODO 算子 - flatMap
+    val rdd: RDD[List[Int]] = sc.makeRDD(List(List(1, 2), List(3, 4)))
 
-    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4))
+    val flatRDD: RDD[Int] = rdd.flatMap(
+      list => {
+        list
+      }
+    )
 
-    def mapFunction(num: Int): Int = {
-      num * 2
-    }
-
-    // val mapRDD = rdd.map(mapFunction)
-    // val mapRDD = rdd.map((num: Int) => num * 2)
-    val mapRDD: RDD[Int] = rdd.map(_ * 2)
-
-    mapRDD.collect().foreach(println)
+    flatRDD.collect().foreach(println)
 
     sc.stop()
 

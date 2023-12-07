@@ -27,7 +27,7 @@ object Spark02_WordCount1 {
 
     // 3. 将单词进行结构的转换,方便统计
     // word => (word, 1)
-    val wordToOne = words.map(word => (word, 1))
+    val wordToOne: RDD[(String, Int)] = words.map(word => (word, 1))
 
     // 4. 将转换后的数据进行分组聚合
     // 相同key的value进行聚合操作

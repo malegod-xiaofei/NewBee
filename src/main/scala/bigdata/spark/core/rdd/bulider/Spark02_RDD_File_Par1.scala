@@ -1,5 +1,6 @@
 package bigdata.spark.core.rdd.bulider
 
+import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
@@ -30,7 +31,7 @@ object Spark02_RDD_File_Par1 {
 
     // 【1,2】，【3】，【】
 
-    val rdd = sc.textFile(Thread.currentThread().getContextClassLoader.getResource("datas/1.txt").getPath, 2)
+    val rdd: RDD[String] = sc.textFile(Thread.currentThread().getContextClassLoader.getResource("datas/1.txt").getPath, 2)
     rdd.saveAsTextFile("src/main/resources/output")
 
     // TODO 关闭环境

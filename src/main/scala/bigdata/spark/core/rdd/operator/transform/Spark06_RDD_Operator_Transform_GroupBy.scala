@@ -7,7 +7,7 @@ import org.apache.spark.{SparkConf, SparkContext}
  * @author Malegod_xiaofei
  * @create 2023-12-04-22:49
  */
-object Spark06_RDD_Operator_Transform1 {
+object Spark06_RDD_Operator_Transform_GroupBy {
 
   def main(args: Array[String]): Unit = {
 
@@ -15,10 +15,15 @@ object Spark06_RDD_Operator_Transform1 {
     val sc = new SparkContext(sparkconf)
 
     // TODO 算子 - group by
-    val rdd: RDD[String] = sc.makeRDD(List("Hello", "Spark", "Scala", "Hadoop"), 2)
+    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4), 2)
 
-    // 分组和分区没有必然的关系
-    val groupRDD: RDD[(Char, Iterable[String])] = rdd.groupBy(_.charAt(0))
+    // groupBy 会将数据源中每一个数据进行分组判断，根据返回的分组 key 进行分组
+    // 相同的 key 值的数据会防止在一个组中
+    def groupFunction(num: Int): Int = {
+      num % 2
+    }
+
+    val groupRDD: RDD[(Int, Iterable[Int])] = rdd.groupBy(groupFunction)
 
     groupRDD.collect().foreach(println)
 

@@ -11,12 +11,12 @@ object Spark01_RDD_Memory {
   def main(args: Array[String]): Unit = {
 
     // TODO 准备环境
-    val sparkconf = new SparkConf().setMaster("local[*]").setAppName("RDD")
+    val sparkconf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("RDD")
     val sc = new SparkContext(sparkconf)
 
     // TODO 创建 RDD
     // 从内存中创建 RDD，将内存中集合的数据作为处理的数据源
-    val seq = Seq[Int](1, 2, 3, 4, 5)
+    val seq: Seq[Int] = Seq[Int](1, 2, 3, 4, 5)
 
     // parallelize : 并行
     // val rdd: RDD[Int] = sc.parallelize(seq)
