@@ -25,6 +25,8 @@ object Spark10_RDD_Operator_Transform_Coalesce {
 
     coalesceRDD.saveAsTextFile("src/main/resources/output2")
 
+    sc.stop()
+
   }
 
 }

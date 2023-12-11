@@ -33,6 +33,9 @@ object Spark08_RDD_Operator_Transform_Sample {
       , 2
       //      , 1
     ).collect().mkString(","))
+
+    sc.stop()
+
   }
 
 }

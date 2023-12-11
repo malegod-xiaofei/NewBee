@@ -25,8 +25,9 @@ object Spark09_RDD_Operator_Transform_Distinct {
     val rdd1: RDD[Int] = rdd.distinct()
 
 
-
     rdd1.collect().foreach(println)
+
+    sc.stop()
 
   }
 
