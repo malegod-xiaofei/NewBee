@@ -26,6 +26,9 @@ object Spark18_RDD_Operator_Transform_MapValues {
     // aggRDD.collect().foreach(print)
 
     // 获取相同 key 的数据的平均值 => （a,3),(6,4)
+    // 先对各个分区中的数据进行预聚合，分区内操作： a(3,2),b(3,1)  b(9,2),a(6,1)
+    // 分区间相加 : a(9,3),b(12,3)
+    // 最后求平均数 : a(3),b(4)
     val newRDD: RDD[(String, (Int, Int))] = rdd.aggregateByKey((0, 0))(
       (t, v) => {
         println(s"t : ${t}")
