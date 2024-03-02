@@ -1,4 +1,4 @@
-package  bigdata.spark.core.wc
+package bigdata.spark.core.wc
 
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
@@ -10,7 +10,7 @@ object Spark03_WordCount {
 
     val sparConf = new SparkConf().setMaster("local").setAppName("WordCount")
     val sc = new SparkContext(sparConf)
-
+    wordcount1(sc)
     wordcount91011(sc)
 
     sc.stop()
